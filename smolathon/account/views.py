@@ -11,34 +11,36 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, DetailView
 
-from posts.utils.travel import generate_travel_route
-from .exceptions import TransactionError, CheckInUrlError
+# from posts.utils.travel import generate_travel_route
+# from .exceptions import TransactionError, CheckInUrlError
 from .forms import RegisterUserForm, AuthenticationUserForm
-from .models import CheckInURL, TravelRoute
-from .utils.point_transaction import add_points_to_user
+# from .models import CheckInURL, TravelRoute
+# from .utils.point_transaction import add_points_to_user
 
 
-@login_required
-def check_in_place(request: HttpRequest, *args, **kwargs):
-    check_url: CheckInURL = get_object_or_404(CheckInURL, id=kwargs.get('id', None))
-
-    model = ContentType.objects.get(model=check_url.content_type.model)
-    post = check_url.content_object
-    try:
-        transaction = add_points_to_user(request.user, check_url)
-    except TransactionError as e:
-        """Chow transaction error message"""
-        print(e)
-        return render(request, 'account/check_in_error.html', {'error': e})
-
-    except CheckInUrlError as e:
-        """Chow url error message"""
-        print(e)
-        return render(request, 'account/check_in_error.html', {'error': e})
-
-    return render(request, 'account/check_in_success.html', {'post': post, 'transaction': transaction})
+# @login_required
+# def check_in_place(request: HttpRequest, *args, **kwargs):
+#     check_url: CheckInURL = get_object_or_404(CheckInURL, id=kwargs.get('id', None))
+#
+#     model = ContentType.objects.get(model=check_url.content_type.model)
+#     post = check_url.content_object
+#     try:
+#         transaction = add_points_to_user(request.user, check_url)
+#     except TransactionError as e:
+#         """Chow transaction error message"""
+#         print(e)
+#         return render(request, 'account/check_in_error.html', {'error': e})
+#
+#     except CheckInUrlError as e:
+#         """Chow url error message"""
+#         print(e)
+#         return render(request, 'account/check_in_error.html', {'error': e})
+#
+#     return render(request, 'account/check_in_success.html', {'post': post, 'transaction': transaction})
 
     # return render(request, 'posts/check_in_error.html', {'error': "error"})
+
+
 
 
 def logout_view(request):
@@ -79,31 +81,31 @@ class UserProfileView(LoginRequiredMixin, DetailView):
         return self.request.user
 
 
-@login_required
-def create_travel_route(request, *args, **kwargs):
-    user = request.user
-    if hasattr(user, 'travel'):
-        user.travel.delete()
-
-    now = datetime.now().date()
-    end = now + timedelta(days=5)
-    route = generate_travel_route(user, now, end)
-
-    return redirect('travel_routes')
-
-
-class UserTravelRoutes(LoginRequiredMixin, DetailView):
-    model = TravelRoute
-    template_name = 'account/travel_route.html'
-    context_object_name = 'route'
-
-    def dispatch(self, request, *args, **kwargs):
-        if not hasattr(self.request.user, 'travel'):
-            return redirect('create_travel_routes')
-        return super().dispatch(request, *args, **kwargs)
-
-    def get_object(self, queryset=None):
-        return self.request.user.travel
+# @login_required
+# def create_travel_route(request, *args, **kwargs):
+#     user = request.user
+#     if hasattr(user, 'travel'):
+#         user.travel.delete()
+#
+#     now = datetime.now().date()
+#     end = now + timedelta(days=5)
+#     route = generate_travel_route(user, now, end)
+#
+#     return redirect('travel_routes')
+#
+# #
+# class UserTravelRoutes(LoginRequiredMixin, DetailView):
+#     model = TravelRoute
+#     template_name = 'account/travel_route.html'
+#     context_object_name = 'route'
+#
+#     def dispatch(self, request, *args, **kwargs):
+#         if not hasattr(self.request.user, 'travel'):
+#             return redirect('create_travel_routes')
+#         return super().dispatch(request, *args, **kwargs)
+#
+#     def get_object(self, queryset=None):
+#         return self.request.user.travel
 
 
 

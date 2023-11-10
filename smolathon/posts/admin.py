@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
-from .models import EventPost, HistoryPost
+from .models import EventPost, HistoryPost, TestQuestion, PlaceTest, QuestionAnswer
 
 
 # Register your models here.
@@ -19,5 +19,12 @@ class EventPostAdmin(admin.ModelAdmin):
 @admin.register(HistoryPost)
 class HistoryPostAdmin(admin.ModelAdmin):
     pass
+
+admin.site.register(PlaceTest)
+
+admin.site.register(TestQuestion)
+admin.site.register(QuestionAnswer)
+
+
 
 

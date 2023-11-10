@@ -1,8 +1,8 @@
 from django.db.models import Q
 from django.http import JsonResponse
 from django.views.generic import DetailView, TemplateView, ListView, FormView
-from account.models import CheckInURL
-from posts.models import HistoryPost, EventPost
+# from account.models import CheckInURL
+from posts.models import HistoryPost, EventPost, PlaceTest, PlaceTestResult
 from posts.forms import PostSearchForm
 from posts.repository.smoladmin import SmoladminRepository
 
@@ -30,6 +30,21 @@ class EventPostDetailView(DetailView):
     model = EventPost
     template_name = "posts/event_detail.html"
     context_object_name = "post"
+
+
+class PlaceTestView(DetailView):
+    model = PlaceTest
+    template_name = 'posts/post_test.html'
+    context_object_name = 'test'
+
+    def get_object(self, queryset=None):
+        return PlaceTest.objects.filter(id=self.kwargs['id']).first()
+
+
+class PlaceTestPreview(DetailView):
+    model = PlaceTest
+    template_name = 'posts/test_preview.html'
+    context_object_name = 'test'
 
 
 class SearchResultListView(ListView):

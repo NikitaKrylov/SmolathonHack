@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for question in test.questions.all %}
+        {{question.text}}
+        {% for answer in question.answers.all %}
+            {{answer.text}}
+        {% endfor %}
+
+    {% endfor %}
+</body>
+</html>

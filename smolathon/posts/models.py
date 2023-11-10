@@ -1,8 +1,15 @@
+import uuid
 from enum import Enum
 
+from django.contrib.auth.models import User
+from django.core.files import File
+from django.core.files.storage import default_storage
+from django.core.files.temp import NamedTemporaryFile
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
+
+from account.utils.check_in_place import create_qr_code
 
 
 class Categories(Enum):
@@ -100,11 +107,47 @@ class HistoryPost(models.Model):
 
 
 class PlaceTest(models.Model):
-    event_post = models.ForeignKey(EventPost, on_delete=models.CASCADE)
+    id = models.UUIDField(default=uuid.uuid4, unique=True, editable=False, primary_key=True)
+    post = models.OneToOneField(EventPost, on_delete=models.CASCADE, related_name='test')
+    qr_code = models.ImageField(_("QR код"), blank=True, upload_to='qrcodes/')
+
+    @property
+    def build_url(self):
+        return 'http://misis52.itatmisis.ru' + reverse('event_post_test', kwargs={'id': self.id})
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        if self.qr_code: return
+
+        file_name = str(self.id) + ".png"
+        file_path = create_qr_code(self.build_url, file_name)
+
+        with NamedTemporaryFile() as temp_file:
+            with open(file_path, 'rb') as file:
+                temp_file.write(file.read())
+
+            self.qr_code.save(file_name, File(temp_file), save=True)
+
+        default_storage.delete(file_path)
+
+    def get_absolute_url(self):
+        return reverse('event_post_test', kwargs={'id': self.id})
 
 
 class TestQuestion(models.Model):
-    test = models.ForeignKey(PlaceTest, on_delete=models.CASCADE)
+    test = models.ForeignKey(PlaceTest, on_delete=models.CASCADE, related_name='questions')
     text = models.CharField(max_length=300)
 
+
+class QuestionAnswer(models.Model):
+    text = models.CharField(max_length=100)
+    question = models.ForeignKey(TestQuestion, on_delete=models.CASCADE, related_name='answers')
+    is_correct = models.BooleanField(default=False)
+
+
+class PlaceTestResult(models.Model):
+    user = models.ForeignKey(User, related_name='test_results', on_delete=models.SET_NULL, null=True, blank=True)
+    result_points = models.PositiveIntegerField()
+    test = models.ForeignKey(PlaceTest, on_delete=models.SET_NULL, null=True, blank=True)
 

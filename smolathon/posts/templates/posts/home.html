@@ -1,10 +1,253 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{% static 'posts/js/libs/gsap/ScrollSmoother.min.js' %}" defer></script>
+    <script src="{% static 'posts/js/libs/gsap/ScrollTrigger.min.js' %}" defer></script>
+    <script src="{% static 'posts/js/libs/gsap/gsap.min.js' %}" defer></script>
+    <script src="{% static 'posts/js/index.js' %}" defer></script>
+
+    <link rel="stylesheet" href="{% static 'posts/css/reset.css' %}" defer>
+    <link rel="stylesheet" href="{% static 'posts/css/main.css' %}" defer>
+    <title>Смоленск</title>
 </head>
-<body>
-<h1>Home</h1>
+<body >
+    <div class="wrapper">
+        <div class="content">
+
+            <header class="header">
+                <div class="container">
+                    <div class="header__top">
+                        <nav class="nav">
+                            <ul class="nav__list">
+                                <li>
+                                    <a class="nav__icon none" id="burgerBtn" href="#">
+                                        <div class="nav__icon-line"></div>
+                                        <div class="nav__icon-line"></div>
+                                        <div class="nav__icon-line"></div>
+                                    </a>
+                                </li>
+                                <li><a class="nav__list-a" href="#!">о городе</a></li>
+                                <li><a class="nav__list-a" href="/cards.html">места</a></li>
+                                <li>
+                                    <p><a class="events active nav__list-a" href="#">заведения</a></p>
+                                    <div class="events-min none">
+                                        <p><a href="#">мероприятия</a></p>
+                                        <p><a href="#">рестораны</a></p>
+                                        <p><a href="#">отели</a></p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="nav__menu">
+                                <li class="nav__list-search" id="search">поиск</li>
+                                <li class="nav__list-lang">
+                                    <div class="rus active">RU</div>
+                                    <div class="eng">EN</div>
+                                </li>
+                                <li class="nav__user">
+                                    <a href="#">
+                                        <a href="#"><img src="{% static 'posts/images/user-path.svg' %}" alt="path" class="user__path"></a>
+                                        <a href="{% url 'profile' %}"><img src="{% static 'posts/images/user-icon-gray.svg' %}" alt="user" class="user__icon"></a>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="burger-menu none">
+                        <ul class="burger__ul">
+                            <li><a href="#">о городе</a></li>
+                            <li><a href="#">заведения</a></li>
+                            <li><a href="#">места</a></li>
+                        </ul>
+                        <div class="burger__bottom">
+                            <p><a href="#">о нас</a></p>
+                            <p><a href="#">контакты</a></p>
+                            <p><a href="#">статьи</a></p>
+                        </div>
+                    </div>
+                    <div class="header__content" data-speed="1.1">
+                        <div class="header__content-left" >
+                            <h1>
+                                <span>открой<br> свой </span><br> cмоленск
+                            </h1>
+                            <button class="header__btn">поехали!</button>
+                        </div>
+                        <div class="header__bot">
+                            <p>умный гид</p>
+                            <img src="{% static 'posts/images/assistant-icon.svg' %}" alt="assistant">
+                        </div>
+                    </div>
+                    <div class="header__dark  none">
+                        <div class="search">
+                            <input class="search__top-block" type="text" placeholder="поиск достопримечательностей, событий и заведений ">
+                            <img src="{% static 'posts/images/search.svg' %}" alt="">
+                        </div>
+                        <div class="search__main-block"></div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="reasons ">
+                <div class="container">
+                    <h1 class="reasons__h"><span>почему</span> нужно <br> &nbsp&nbsp&nbsp&nbsp посетить смоленск</h1>
+                    <div class="reasons__blocks">
+                        <div class="reasons__text">
+                            <img src="{% static 'posts/images/reason1.svg' %}" alt="nature">
+                            <div class="reasons__text-main">природные красоты</div>
+                            <div class="reasons__text-description">
+                                Невероятная природа, просто фантастическая, а какие леса - ну самая настоящая сказка.Газуем в срочном порядке
+                            </div>
+                        </div>
+                        <div class="reasons__text">
+                            <img src="{% static 'posts/images/reason2.svg' %}" alt="history">
+                            <div class="reasons__text-main">богатая история</div>
+                            <div class="reasons__text-description">
+                                А какая история, какая история, больше тысячи лет этой малышке! Сложно в это поверить.
+                            </div>
+                        </div>
+                        <div class="reasons__text ">
+                            <img src="{% static 'posts/images/reason3.svg' %}" alt="culture">
+                            <div class="reasons__text-main">культурные мероприятия</div>
+                            <div class="reasons__text-description">
+                                Только ради культурных мероприятий можно приехать в Смоленск и не уехать обратно - они вас точно не отпустят.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section sights">
+                <div class="container">
+                    <div class="sights__cards">
+                        <div class="sights__card ">
+                            <div class="bg">
+                                <img src="{% static 'posts/images/sights/sight1.png' %}" alt="">
+                            </div>
+                            <div class="avatar">
+                                <div class="img">
+                                    <img src="{% static 'posts/images/sights/icon1.svg' %}" alt="">
+                                </div>
+                                <div class="text">
+                                    <span>Успенский собор</span>
+                                    <span>Духовный центр </span>
+                                    <a class="sights__btn " href="{% static 'posts/cards.html' %}">изучить</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sights__card ">
+                            <div class="bg">
+                                <img src="{% static 'posts/images/sights/sight2.jpg' %}" alt="">
+                            </div>
+                            <div class="avatar">
+                                <div class="img">
+                                    <img src="{% static 'posts/images/sights/icon2.svg' %}" alt="">
+                                </div>
+                                <div class="text">
+                                    <span>Успенский собор</span>
+                                    <span>Духовный центр </span>
+                                    <a class="sights__btn " href="./cards.html">изучить</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sights__card active">
+                            <div class="bg">
+                                <img src="{% static 'posts/images/sights/sight1.png' %}" alt="">
+                            </div>
+                            <div class="avatar">
+                                <div class="img">
+                                    <img src="{% static 'posts/images/sights/icon3.svg' %}" alt="">
+                                </div>
+                                <div class="text">
+                                    <span>Успенский собор</span>
+                                    <span>Духовный центр </span>
+                                    <a class="sights__btn " href="./cards.html">изучить</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sights__card ">
+                            <div class="bg">
+                                <img src="{% static 'posts/images/sights/sight4.jpg' %}" alt="">
+                            </div>
+                            <div class="avatar">
+                                <div class="img">
+                                    <img src="{% static 'posts/images/sights/icon4.svg' %}" alt="">
+                                </div>
+                                <div class="text">
+                                    <span>Успенский собор</span>
+                                    <span>Духовный центр </span>
+                                    <a class="sights__btn" href="./cards.html">изучить</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sights__card ">
+                            <div class="bg">
+                                <img src="{% static 'posts/images/blur-card.jpg' %}" alt="">
+                            </div>
+                            <div class="avatar">
+                                <div class="last-avatar">
+                                    <img src="{% static 'posts/images/point-right.svg' %}" alt="">
+                                </div>
+                                <div class="text">
+                                    <a class="sights__btn sights__btn-more" href="./cards.html">смотреть все</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="map">
+                <h2 class="map__h">твой <span>первый шаг</span> <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp в изучении города</h2>
+            </section>
+
+            <div class="map__image">
+                <img class="map__icons" src="{% static 'posts/images/instruction.svg' %}" alt="" class="map__icons">
+                <img class="map__img" src="{% static 'posts/images/road.jpg' %}" width="100%" alt="">
+            </div>
+
+            <img src="{% static 'posts/images/bottom-img.jpg' %}" alt="" class="under__map">
+
+
+            <footer class="footer">
+                <div class="container">
+                    <nav class="bottom__items">
+                        <div class="bottom__item">
+                            <p class="bottom__h">Номер тех.поддержки</p>
+                            <p class="bottom__link"><a href="#">+7 (952) 812 00 00 </a></p>
+                            <p class="bottom__h">Наши партнеры</p>
+                            <a href="#"><img width="130px" src="{% static 'posts/images/misis-logo.svg' %}" class="bottom__h"></img></a>
+                            <a href="#"><img width="54px" src="{% static 'posts/images/russian-dvor.jpg' %}" class="bottom__h"></img></a>
+                        </div>
+                        <div class="bottom__item">
+                            <p class="bottom__h">Номер соцсети</p>
+                            <a href="#">
+                                <img src="{% static 'posts/images/tg.svg' %}" alt="">
+                            </a>
+                            <a href="#">
+                                <img src="{% static 'posts/images/vk-bottom.svg' %}" alt="">
+                            </a>
+                            <a href="#">
+                                <img src="{% static 'posts/images/insta.svg' %}" alt="">
+                            </a>
+                            <a href="#">
+                                <img src="{% static 'posts/images/mail.svg' %}" alt="">
+                            </a>
+                        </div>
+                        <div class="bottom__item">
+                            <form class="bottom__form" action="">
+                                <p class="form__p">Подпишись на нашу новостную рассылку и получи свои первые 10 монет!</p>
+                                <input class="form__input" type="mail" placeholder="твоя почта">
+                                <button type="submit"><img src="{% static 'posts/images/point-right.svg' %}" alt=""></button>
+                            </form>
+                        </div>
+                    </nav>
+                </div>
+            </footer>
+        </div>
+    </div>
+
 </body>
 </html>
