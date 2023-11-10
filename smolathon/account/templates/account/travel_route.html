@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  {% for day in route.days.all %}
+  <div style="padding: 40px; color: #b015d6">
+      <p>{{day.day_num}}</p>
+      <p>{{day.date}}</p>
+      <p>{{day.get_day_type_display}}</p>
+      <p>{{day.events.all}}</p>
+  </div>
+  {% endfor %}
+</body>
+</html>

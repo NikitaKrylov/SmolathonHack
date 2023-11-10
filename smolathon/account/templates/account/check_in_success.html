@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'account/css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'account/css/qr.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="header__top">
+                <div class="header__menu">
+                    <a href="#"><img src="{% static 'account/images/menu-qr.svg' %}" alt=""></a>
+                </div>
+                <div class="header__logo">
+                    <img src="{% static 'account/images/qr-logo.svg' %}" alt="">
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="content">
+        <h2 class="content__h">Привет,<br> любитель<br> истории</h2>
+        <div class="content__options">
+            <div class="content__option">
+                <img src="{% static 'account/images/qr-name-place.svg' %}" alt="">
+                <div class="option__text">
+                    <div class="content__option-h">Посещенная локация</div>
+                    <div class="content__option-p">{{transaction.check_in_url.content_object.title}}</div>
+                </div>
+            </div>
+            <div class="content__option">
+                <img src="{% static 'account/images/award.svg' %}" alt="">
+                <div class="option__text">
+                    <div class="content__option-h">Награда</div>
+                    <div class="content__option-p">{{transaction.points}} монеты</div>
+                </div>
+            </div>
+            <div class="content__option">
+                <img src="{% static 'account/images/qr-name.svg' %}" alt="">
+                <div class="option__text">
+                    <div class="content__option-h">Звание</div>
+                    <div class="content__option-p">Крестьянин</div>
+                </div>
+            </div>
+        </div>
+        <img class="cup" src="{% static 'account/images/cup.svg' %}" alt="">
+        <p class="content__p">Продолжай в том же духе!</p>
+        <button class="btn"><a style="color: white;" href="{{transaction.check_in_url.content_object.get_absolute_url}}">изучить локацию подробнее</a></button>
+    </div>
+</body>
+</html>

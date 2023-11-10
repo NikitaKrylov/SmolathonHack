@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;700&display=swap');
+
+:root {
+    --white: #fff;
+    --beige: #F2D9BB;
+    --orange: #FB9600;
+    --black: #000;
+    --yellow: #F5CC90;
+}
+
+a {
+    color: var(--white);
+}
+
+body {
+    min-height: 100vh;
+    position: relative;
+    font-family: 'Unbounded', sans-serif;
+    background: #fff;
+    font-size: 16px;
+    color: var(--white);
+}
+
+.section{
+    min-height: inherit;
+    background-image: url('/static/account/images/auth-back.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 80px;
+}
+
+.container {
+    position: relative;
+    margin: 0 auto;
+    padding: 50px 73px;
+    max-width: 443px;
+    height: 581px;
+    border-radius: 25px;
+    border: 2px solid rgba(0, 0, 0, 0.20);
+    background: rgba(0, 0, 0, 0.35);
+    box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.20), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(10px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.user {
+    width: 106px;
+    height: 106px;
+}
+.cross {
+    display: inline-block;
+    position: absolute;
+    right: 20px;
+    top: 18px;
+}
+
+.enter__h {
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.auth__form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 13px;
+    font-size: 1.2em;
+}
+
+.auth__form > *{
+    border-radius: 5px;
+}
+
+.auth__form input {
+    display: block;
+    min-width: 297px;
+    padding: 12px;
+    background: rgb(255, 255, 255, .4);
+    letter-spacing: 1px;
+}
+
+#number::-webkit-outer-spin-button,
+#number::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+
+.auth__form input::placeholder{
+    color: var(--white);
+    font-weight: 300;
+    font-size: .9em;
+    letter-spacing: 0;
+}
+
+.auth__form button{
+    background-color: var(--white);
+    color: #000;
+    padding: 13px 113px;
+    font-weight: 400;
+}
+
+.enter__use-p {
+}
+
+.enter__use-icons {
+    display: flex;
+    align-items:center;
+    column-gap: 20px;
+}
+
+.enter__icon img{
+    width: 48px;
+    height: 48px;
+    background: rgb(255, 255, 255, .5);
+    border-radius: 10px;
+}
+
+.enter__icon.vk img{
+    padding: 2px 6px;
+}
+
+.enter__icon.google img{
+    padding: 2px 9px;
+}
+
+.enter__icon.apple img{
+    padding: 0px 8px;
+}
+
+.enter__new {
+    margin-top: 8px;
+    font-weight: 300;
+    font-size: .9em;
+}

@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'account/css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'account/css/auth.css' %}">
+    <title>Регистрация</title>
+</head>
+<body> <section class="section">
+        <div class="container">
+            <div class="cross"><a href="{% url 'home' %}"><img src="{% static 'account/images/cross-auth.svg' %}" alt=""></a></div>
+            <img src="{% static 'account/images/user-icon.svg' %}" alt="user" class="user">
+            <p class="enter__h">Регистрация</p>
+            <form method="post" class="auth__form">
+                {% csrf_token %}
+                {% for field in form %}
+                    {{field}}
+                {% endfor %}
+<!--                <input type="number" id="number" placeholder="Телефон">-->
+<!--                <input type="password" id="password" placeholder="Пароль">-->
+                <button type="submit">Создать</button>
+            </form>
+            <p class="enter__use-p">Войти с помощью</p>
+            <div class="enter__use-icons">
+                <a class="enter__icon vk" href="/login/vk-oauth2"><img src="{% static 'account/images/vk.svg' %}" alt="vk"></a>
+                <a class="enter__icon google" href="#"><img src="{% static 'account/images/google.svg' %}" alt="google"></a>
+                <a class="enter__icon apple" href="#"><img src="{% static 'account/images/apple.svg' %}" alt="apple"></a>
+            </div>
+            <p class="enter__new"><a href="{% url 'login' %}">Авторизироваться</a></p>
+        </div>
+    </section>
+
+</body>
+</html>
