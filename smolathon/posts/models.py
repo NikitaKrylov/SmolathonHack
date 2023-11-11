@@ -113,7 +113,8 @@ class PlaceTest(models.Model):
 
     @property
     def build_url(self):
-        return 'http://misis52.itatmisis.ru' + reverse('event_post_test', kwargs={'id': self.id})
+        return 'http://misis52.itatmisis.ru' + reverse('event_post_test_preview', kwargs={'id': self.id})
+        # return 'http://172.20.10.3:8000' + reverse('event_post_test_preview', kwargs={'id': self.id})
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)

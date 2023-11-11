@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;700&display=swap');
+
+:root {
+    --white: #fff;
+    --beige: #F2D9BB;
+    --orange: #FB9600;
+    --black: #000;
+    --yellow: #F5CC90;
+    --gray: #E9E9E9;
+}
+
+body {
+    padding: 16px 18px 0;
+    position: relative;
+    font-family: 'Unbounded', sans-serif;
+    color: black;
+    font-size: 18px;
+    color: var(--black);
+    font-weight: 400;
+}
+
+a{
+    color: white;
+}
+
+.header {
+    min-height: 73px;
+}
+
+.container {
+}
+
+.header__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__menu {
+    width: 38px;
+    height: 38px;
+    background-color: rgba(53, 53, 53, 0.8);
+    border-radius: 50%;
+}
+
+.header__logo {
+}
+
+.content {
+    position: relative;
+}
+
+.content__h {
+    max-width: 357px;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 35px;
+    margin-left: 10px;
+}
+
+.content__options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 30px;
+    grid-template-rows: 1fr 1fr;
+}
+
+.content__option:nth-child(1) {
+    grid-area: 1/1/2/3;
+}
+
+.content__option:nth-child(2) {
+    grid-area: 2/1/3/3;
+}
+
+.content__option{
+    max-height: 42px;
+    display: flex;
+    column-gap: 10px;
+}
+
+.content__text{
+    display: flex;
+    flex-direction: column;
+    row-gap: 14px;
+}
+
+.content__option-h {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.content__option-p {
+    opacity: 0.7;
+    font-size: 15px;
+}
+
+.cup{
+    position: absolute;
+    margin-top: 30px;
+    right: 0;
+    width: 160px;
+}
+
+.content__p {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 200px auto 0;
+    max-width: fit-content;
+    text-align: center;
+}
+
+.btn {
+    min-width: 310px;
+    transform: translateX(7%);
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 8px;
+    color: white;
+    background: rgba(0, 0, 0, 0.80);
+    padding: 10px 13px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+}
+
+.gold-btn {
+    min-width: 162px;
+    transform: translateX(58%);
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 8px;
+    color: white;
+    background: linear-gradient(180deg, #FF9800 0%, #FFBC3B 100%);
+    padding: 10px 13px;
+    border-radius: 50px;
+}

@@ -30,14 +30,14 @@
                                         <div class="nav__icon-line"></div>
                                     </a>
                                 </li>
-                                <li><a class="nav__list-a" href="#!">о городе</a></li>
-                                <li><a class="nav__list-a" href="/cards.html">места</a></li>
+                                <li><a class="nav__list-a" href="#">о городе</a></li>
+                                <li><a class="nav__list-a" href="#">места</a></li>
                                 <li>
                                     <p><a class="events active nav__list-a" href="#">заведения</a></p>
                                     <div class="events-min none">
-                                        <p><a href="#">мероприятия</a></p>
-                                        <p><a href="#">рестораны</a></p>
-                                        <p><a href="#">отели</a></p>
+                                        <p><a href="{% url 'search' %}">мероприятия</a></p>
+                                        <p><a href="{% url 'search' %}">рестораны</a></p>
+                                        <p><a href="{% url 'search' %}">отели</a></p>
                                     </div>
                                 </li>
                             </ul>
@@ -208,7 +208,12 @@
                 <img class="map__img" src="{% static 'posts/images/road.jpg' %}" width="100%" alt="">
             </div>
 
-            <img src="{% static 'posts/images/bottom-img.jpg' %}" alt="" class="under__map">
+            <div class="under__map">
+                <h2 class="map__h">что делать если <br><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp ты ничего не понял</span></h2>
+                <img class="map__img" src="{% static 'posts/images/chat.jpg' %}" alt="">
+            </div>
+
+            <img src="{% static 'posts/images/bottom-img.jpg' %}" alt="" class="under__map-img">
 
 
             <footer class="footer">

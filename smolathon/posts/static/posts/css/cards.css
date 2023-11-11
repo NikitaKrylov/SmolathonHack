@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;700&display=swap');
+
+:root {
+    --white: #fff;
+    --beige: #F2D9BB;
+    --orange: #FB9600;
+    --black: #000;
+    --yellow: #F5CC90;
+    --gray: #E9E9E9;
+}
+
+.nav__list-a {
+    color: var(--black);
+}
+
+body {
+    position: relative;
+    font-family: 'Unbounded', sans-serif;
+    background: #fff;
+    font-size: 16px;
+    color: var(--black);
+}
+
+.container {
+    margin: 0 24px;
+    max-width: 1480px;
+}
+
+.header__cards{
+    width: 100%;
+    padding: 20px 24px;
+    min-height: 16px;
+    position: fixed;
+    top: 0;
+    z-index: 222;
+}
+
+.header__bg {
+    background-color: var(--gray);
+}
+
+.header__top-cards {
+    color: var(--black);
+    position: sticky;
+    top: 0;
+    font-size: 1.25rem;
+    font-weight: 300;
+    z-index: 1111;
+}
+
+.events {
+    --bg-img: url('/images/point-bottom-dark.svg') !important;
+}
+
+.events-min {
+    color: var(--black);
+    opacity: 0.8;
+}
+
+.nav__list-search::after {
+    background-image: url('/images/search-dark.svg') !important;
+}
+
+.nav__list-lang {
+    background: var(--white) !important;
+}
+
+.nav__list-lang .active {
+    background: var(--black) !important;
+    color: var(--white) !important;
+}
+
+.user__path {
+    background-color: var(--white) !important;
+}
+
+
+/*--search cards--*/
+.cards__search {
+    margin: 180px auto 60px;
+    max-width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.circle {
+    width: 90px;
+    height: 90px;
+    background-color: var(--gray);
+    border-radius: 50%;
+    position: relative;
+}
+
+.circle:not(:last-child):after{
+    content:'';
+    display: inline-block;
+    position: absolute;
+    background-image: url('/images/elipse-search-cards-bottom.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 90px;
+    height: 90px;
+    right: -45px;
+    bottom: -35px;
+}
+
+.circle:not(:last-child):before{
+    content:'';
+    display: inline-block;
+    position: absolute;
+    background-image: url('/images/elipse-search-cards-top.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 90px;
+    height: 90px;
+    right: -45px;
+    bottom: -9px;
+}
+
+.circle a {
+    margin-top: 8px;
+    margin-left: 8px;
+    padding: 8px;
+    min-height: 75px;
+    max-width: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    position: relative;
+}
+
+.circle a.active {
+    background-color: #2B546A;
+    border-radius: 50%;
+}
+
+.cards__icon {
+    width: 25px;
+}
+
+#search {
+    position: relative;
+    z-index: 667;
+}
+
+.search__input {
+    padding: 0 35px;
+    z-index: 666;
+    position: absolute;
+    width: 82px;
+    height: 82px;
+    background: #2B546A;
+    right: 5px;
+    top: 5px;
+    border-radius: 50px;
+    width: 400px;
+    color: #EFEFEF;
+    transition: all 1s;
+}
+
+@media (max-width: 390px) {
+    .search__input {
+        width: 86vw;
+    }
+}
+
+/*---description of img---*/
+.description {
+    height: 100vh;
+    min-width: 100vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.description::after{
+    content:'';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    opacity: 0.4;
+    background: linear-gradient(180deg, #000 0.16%, rgba(105, 105, 105, 0.59) 55.02%, rgba(255, 255, 255, 0.00) 100%);
+}
+
+.description__content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(50px);
+    border-top-right-radius: 50px;
+
+    max-width: 550px;
+    max-height: 600px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+    padding: 50px 25px;
+}
+
+.description__h {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-left: 25px;
+}
+
+.prev-descr{
+    position: absolute;
+    top: 24px;
+    left: 20px;
+}
+
+.prev-descr:hover{
+    cursor: pointer;
+}
+
+.description__text{
+    position: relative;
+    font-size: 1.2em;
+    font-weight: 300;
+    line-height: 32px;
+    max-height: 450px;
+    overflow-y: scroll;
+    padding: 0 25px;
+}
+
+.description__text::-webkit-scrollbar {
+    opacity: 0;
+    width: 4px;
+}
+
+.description__text::-webkit-scrollbar-thumb {
+    position: absolute;
+    display: inline-block;
+    border-radius: 20px;
+    background-color: var(--white);
+    opacity: 0.5;
+}
+
+/*---cards---*/
+.cards__block {
+    margin: 0 auto;
+    max-width: 1108px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 260px);
+    gap: 20px;
+}
+
+.card__content{
+    color: var(--black);
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+}
+
+.card__content:nth-child(even){
+    transform: translateY(70px);
+}
+
+.card{
+    max-height: 280px;
+    display: grid;
+    overflow: hidden;
+    background-size: cover;
+    border-radius: 50px;
+    position: relative;
+}
+
+.card_img{
+    height: 280px;
+    overflow: hidden;
+}
+
+.card__h{
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 400;
+    margin-left: 10px;
+}
+.card__p{
+    font-size: 20px;
+    font-weight: 300;
+    margin-left: 10px;
+}
+
+.card__like, .card__calendar {
+    position: absolute;
+    right: 39px;
+    max-width: 22px;
+}
+
+.card__like img, .card__calendar img {
+    padding: 8px;
+    background: rgba(255, 255, 255, .3);
+    border-radius: 10px;
+}
+
+.card__like {
+    top: 23px;
+}
+
+.card__calendar {
+    top: 70px;
+}
+.card__calendar:hover{
+    transition: max-width .3s ease-in-out;
+}
+
+.find_on{
+    position: absolute;
+    background-color: #EFEFEF;
+    border-radius: 55px;
+    top: -70px;
+    left: 13px;
+    padding: 12px 49px;
+    font-size: 14px;
+}
+
+.find_on a{
+    color: black;
+    font-weight: 500;
+}
+
+.find_on::after{
+    position: absolute;
+    right: 20px;
+    width: 21px;
+    height: 18px;
+    content:'';
+    display: inline-block;
+    background-image: url(../images/map.svg);
+    background-repeat: no-repeat;
+    margin-left: 4px;
+}

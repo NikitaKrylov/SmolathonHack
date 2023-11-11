@@ -377,14 +377,14 @@ body {
 .sights__cards {
     margin: 120px auto;
     display: flex;
-    height: 480px;
-    width: 1000px;
-    grid-gap: 10px ;
+    height: 517px;
+    width: 1046px;
+    grid-gap: 12px ;
 }
 .sights__card {
-    width: 60px;
+    width: 102px;
     height: 100%;
-    border-radius: 25px;
+    border-radius: 35px;
     position: relative;
     overflow: hidden;
     cursor: pointer;
@@ -418,6 +418,7 @@ body {
     width: 100%;
     top: 0;
     left: 0;
+    right: 0;
     object-fit: cover;
     filter: 9px;
 }
@@ -426,7 +427,7 @@ body {
     bottom: 0;
     left: 0;
     display: flex;
-    padding: 10px 8px;
+    padding: 18px 21px;
     z-index: 2;
 }
 
@@ -438,13 +439,16 @@ body {
 
 .avatar .img{
     position: relative;
-    height: 40px;
-    width: 40px;
+    height: 60px;
+    width: 60px;
     box-sizing: border-box;
     border: 3px solid var(--white);
     background-color: var(--white);
     border-radius: 50%;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .avatar .last-avatar{
@@ -464,18 +468,16 @@ body {
 
 .avatar .img img {
     position: absolute;
-    top: 5px;
-    left: 5px;
-    width: 25px;
+    width: 37px;
     object-fit: cover;
 }
 .avatar .text {
     position: absolute;
-    left: 50px;
+    bottom: 28px;
+    left: 105px;
     display: flex;
     width: fit-content;
     flex-direction: column;
-    margin-left: 10px;
     visibility: visible;
     opacity: 1;
 }
@@ -505,6 +507,7 @@ body {
 
 .sights__btn-more {
     left: 310px !important;
+    bottom: 0;
 }
 
 
@@ -532,7 +535,7 @@ body {
 .map__image {
     background-color: var(--white);
     position: relative;
-    padding-bottom: 200px;
+    padding-bottom: 111px;
     border-radius: 0 0 50px 50px;
 }
 
@@ -543,11 +546,32 @@ body {
     width: 90%;
 }
 
-.under__map{
+.under__map-img{
     position: absolute;
     width: 100%;
     transform: translateY(-20%);
     z-index: -1;
+}
+
+.under__map{
+    background-color: var(--white);
+    min-height: 200px;
+    border-radius: 0 0 50px 50px;
+}
+
+.under__map .map__h{
+    max-width: fit-content;
+    margin: 0 auto;
+}
+
+.under__map .map__h span{
+    color: #C14E4E;
+}
+
+.under__map .map__img{
+    max-width: 1025px;
+    margin: 64px auto 100px;
+    transform: translateX(25%);
 }
 
 

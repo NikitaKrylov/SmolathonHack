@@ -1,20 +1,132 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'posts/css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'posts/css/cards.css' %}">
+    <link rel="stylesheet" href="{% static 'posts/css/main.css' %}">
+    <title>Document</title>
 </head>
 <body>
-    <form method="get" action=".">
-        {{form.as_p}}
-        <input type="submit" value="Поиск">
-    </form>
+    <div class="wrapper">
+        <div class="content">
+            <header class="header__cards header__bg">
+                <div class="container">
+                    <div class="header__top-cards">
+                        <nav class="nav">
+                            <ul class="nav__list">
+                                <li>
+                                    <a class="nav__icon none" id="burgerBtn" href="#">
+                                        <div class="nav__icon-line"></div>
+                                        <div class="nav__icon-line"></div>
+                                        <div class="nav__icon-line"></div>
+                                    </a>
+                                </li>
+                                <li><a class="nav__list-a" href="{% url 'home' %}">на главную</a></li>
+                                <li><a class="nav__list-a" href="#!">о городе</a></li>
+                                <li>
+                                    <p><a class="events active nav__list-a" href="#">заведения</a></p>
+                                    <div class="events-min none">
+                                        <p><a href="#">мероприятия</a></p>
+                                        <p><a href="#">рестораны</a></p>
+                                        <p><a href="#">отели</a></p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="nav__menu">
+                                <li class="nav__list-search nav__list-a" id="search">поиск</li>
+                                <li class="nav__list-lang ">
+                                    <div class="nav__list-a rus active">RU</div>
+                                    <div class="nav__list-a eng">EN</div>
+                                </li>
+                                <li class="nav__user">
+                                    <a href="#">
+                                        <a href="#"><img src="{% static 'posts/images/user-path-dark.svg' %}" alt="path" class="user__path"></a>
+                                        <a href="auth.html"><img src="{% static 'posts/images/user-icon-dark.svg' %}" alt="user" class="user__icon"></a>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="burger-menu none">
+                        <ul class="burger__ul">
+                            <li><a href="#">о городе</a></li>
+                            <li><a href="#">заведения</a></li>
+                            <li><a href="#">места</a></li>
+                        </ul>
+                        <div class="burger__bottom">
+                            <p><a href="#">о нас</a></p>
+                            <p><a href="#">контакты</a></p>
+                            <p><a href="#">статьи</a></p>
+                        </div>
+                    </div>
+                    <div class="header__dark  none">
+                        <div class="search">
 
-    {% for post in posts %}
 
-    <p>{{post.title}}</p>
+                            <input class="search__top-block" name="" type="text" placeholder="поиск достопримечательностей, событий и заведений ">
+                            <img src="{% static 'posts/images/search.svg' %}" alt="">
+                        </div>
+                        <div class="search__main-block"></div>
+                    </div>
+                </div>
+            </header>
 
-    {% endfor %}
+            <section class="section section__cards ">
+                <div class="container">
+
+                    <form action="." method="get" class="cards__search">
+                        <div class="circle">
+                            <a href="#"><img src="{% static 'posts/images/like-icon.svg' %}" alt="" class="cards__icon"></a>
+                        </div>
+                        <div class="circle">
+                            <a href="#"><img src="{% static 'posts/images/calendar-icon.svg' %}" alt="" class="cards__icon"></a>
+                        </div>
+                        <div class="circle">
+                            <a  href="#"><img src="{% static 'posts/images/done-icon.svg' %}" alt="" class="cards__icon"></a>
+                        </div>
+                        <div class="circle circle__search">
+                            <a class="active" href="#"><img id="search-icon" src="{% static 'posts/images/search.svg' %}" alt="" class="cards__icon"></a>
+                            {{form}}
+<!--                            <input type="submit" hidden />-->
+<!--                            <input placeholder="поиск" class="search__input none" type="text">-->
+                        </div>
+                    </form>
+
+                    <div class="cards__block">
+                        {% for post in posts %}
+                        <div class="card__content">
+                            <div class="card">
+                                <a class="card__like" href="#"><img src="{% static 'posts/images/like-icon.svg' %}" alt=""></a>
+                                <a class="card__calendar" href="#"><img src="{% static 'posts/images/calendar-icon.svg' %}" alt=""></a>
+                                <img class="card_img" src="{{post.images.first.file.url}}" alt="">
+                            </div>
+                            <a href="{{post.get_absolute_url}}" style="color: var(--black);" class="card__h">{{post.title}}</a>
+                            <p class="card__p">описание</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+
+<!--            <section class="description none">-->
+<!--                <div class="description__content">-->
+<!--                    <img src="./images/prev-icon.svg" alt=""  class="prev-descr"></img>-->
+<!--                    <p class="description__h">УСПЕНСКИЙ СОБОР</p>-->
+<!--                    <p class="description__text">-->
+<!--                        В каждом городе есть места, обладающие особой притягательной силой. В Смоленске, несомненно, к таким местам относится Соборный холм. Здесь духовный центр города, его сердце. Здесь находится целый ряд интересных в историческом и архитектурном планах построек и главная православная святыня Смолен­ска — Успенский собор, от которого холм и получил своё названиеый рвная святыня Смолен­ска-->
+<!--                        В каждом городе есть места, обладающие особой притягательной силой. В Смоленске, несомненно, к таким местам относится Соборный холм. Здесь духовный центр города, его сердце. Здесь находится целый ряд интересных в историческом и архитектурном планах построек и главная православная святыня Смолен­ска — Успенский собор, от которого холм и получил своё названиеый рвная святыня Смолен­ска-->
+<!--                        В каждом городе есть места, обладающие особой притягательной силой. В Смоленске, несомненно, к таким местам относится Соборный холм. Здесь духовный центр города, его сердце. Здесь находится целый ряд интересных в историческом и архитектурном планах построек и главная православная святыня Смолен­ска — Успенский собор, от которого холм и получил своё названиеый рвная святыня Смолен­ска-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </section>-->
+        </div>
+
+    </div>
+    <script src="{% static 'posts/js/cards.js' %}"></script>
 
 </body>
 </html>

@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'posts/css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'posts/css/qr.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="header__top">
+                <div class="header__menu">
+                    <a href="#"><img src="{% static 'posts/images/menu-qr.svg' %}" alt=""></a>
+                </div>
+                <div class="header__logo">
+                    <img src="{% static 'posts/images/qr-logo.svg' %}" alt="">
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="content">
+        <h2 class="content__h">Привет,<br> любитель<br> истории</h2>
+        <div class="content__options">
+            <div class="content__option">
+                <img src="{% static 'posts/images/qr-name-place.svg' %}" alt="">
+                <div class="option__text">
+                    <div class="content__option-h">Твоя локация</div>
+                    <div class="content__option-p">{{test.post.title}}</div>
+                </div>
+            </div>
+            <div class="content__option">
+                <img src="{% static 'posts/images/award.svg' %}" alt="">
+                <div class="option__text">
+                    <div class="content__option-h">Награда</div>
+                    <div class="content__option-p">Ты можешь получить 2-5 монет</div>
+                </div>
+            </div>
+        </div>
+        <img class="cup" src="{% static 'posts/images/cup.svg' %}" alt="">
+        <p class="content__p">Чтобы забрать награду, нужно пройти тест</p>
+        <button class="gold-btn"><a href="{{test.get_absolute_url}}">пройти тест</a></button>
+        <button class="btn"><a href="{{test.post.get_absolute_url}}">изучить локацию подробнее</a></button>
+    </div>
+</body>
+</html>

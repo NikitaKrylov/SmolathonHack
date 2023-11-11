@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'posts/css/test.css' %}">
+    <script src="{% static 'posts/js/test.js' %}" defer></script>
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="wrapper">
+        <main class="main">
+            <div class="quiz__head">
+                <div class="head__content" id="head">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut ducimus odit accusamus, illum quas magni provident odio praesentium commodi sint, porro harum, minus cupiditate architecto culpa aut ex dolore officia.</div>
+            </div>
+            <div class="quiz__body">
+                <div class="buttons" color="red">
+                    <div class="buttons__content" id="buttons">
+                        <button style="display: none;" class='btn-need'><a href="{% url 'render_after' %}">Узнать результаты</a></button>
+                    </div>
+                </div>
+      
+                <div class="quiz__footer">
+                    <div class="footer__content" id="pages">0 / 0 </div>
+                </div>
+            </div>
+           
+        </main>
+     </div>
+    
+
+     
+    <iframe src="{% url 'render_test' %}" width="480" height="720" class="quiz-frame"></iframe>
+</body>
+</html>

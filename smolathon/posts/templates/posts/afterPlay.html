@@ -1,0 +1,58 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'posts/css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'posts/css/afterPlay.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper1">
+        <header class="header">
+            <div class="container">
+                <nav class="header__top">
+                    <div class="header__menu">
+                        <a href="#"><img src="{% static 'posts/images/menu-qr.svg' %}" alt=""></a>
+                    </div>
+                    <div class="header__logo">
+                        <img src="{% static 'posts/images/qr-logo.svg' %}" alt="">
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <div class="content">
+            <h2 class="content__h">И снова<br> привет!</h2>
+            <h3 class="content__h">Поздравляю с<br>твоими первыми<br>очками!</h3>
+            <div class="content__options">
+                <div class="content__option">
+                    <img src="{% static 'posts/images/qr-name-place.svg' %}" alt="">
+                    <div class="option__text">
+                        <div class="content__option-h">Посещенная локация</div>
+                        <div class="content__option-p">Дворец спорта Юбилейный</div>
+                    </div>
+                </div>
+                <div class="content__option">
+                    <img src="{% static 'posts/images/award.svg' %}" alt="">
+                    <div class="option__text">
+                        <div class="content__option-h">Награда</div>
+                        <div class="content__option-p">4 монеты</div>
+                    </div>
+                </div>
+                <div class="content__option">
+                    <img src="{% static 'posts/images/qr-name.svg' %}" alt="">
+                    <div class="option__text">
+                        <div class="content__option-h">Звание</div>
+                        <div class="content__option-p">Боярин</div>
+                    </div>
+                </div>
+            </div>
+            <img class="cup" src="{% static 'posts/images/cup.svg' %}" alt="">
+            <p class="content__p">Продолжай в том же духе!</p>
+            <button class="btn"><a href="#">поделись своим результатом </a></button>
+        </div>
+    </div>
+</body>
+</html>
